@@ -8,12 +8,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 def load_data():
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    movies = pd.read_csv(os.path.join(BASE_DIR, "data/tmdb_5000_movies.csv"))
-    credits = pd.read_csv(os.path.join(BASE_DIR, "data/tmdb_5000_credits.csv"))
-
-    movies = movies.merge(credits, on='title')
-    movies = movies[['movie_id', 'title', 'overview',
-                     'genres', 'keywords', 'cast', 'crew']]
+    movies = pd.read_csv(os.path.join(BASE_DIR, "tmdb_5000_movies.csv"))
+   
     movies.dropna(inplace=True)
 
     def convert(text):
